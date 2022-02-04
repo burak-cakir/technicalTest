@@ -4,7 +4,7 @@ import URLImage
 struct spacexLatestView: View {
     
     @State var latest : latestModel = latestModel()
-    
+    @State var multiColor = true
     
     
     
@@ -26,7 +26,7 @@ struct spacexLatestView: View {
                 .foregroundColor(Color.white)
                 .cornerRadius(5)
             VStack{
-                Text("Spacex Name :")
+                Text("Spacex Name ")
                     .font(.headline)
                 HStack{
                     Spacer()
@@ -36,12 +36,24 @@ struct spacexLatestView: View {
                     Spacer()
                 }
                 
+                
              
             }
             .foregroundColor(Color.white)
             .padding(5)
             .background(Color.blue)
             .cornerRadius(5)
+            VStack{
+                HStack{
+                    Text("Flight Number : ")
+                    Text(String (latest.flight_number))
+                    Text("Success : " + String (latest.success ? "OK" : "NOT"))
+                }
+                Text("Launcpad : " + latest.launchpad )
+               
+            }
+            
+            
             HStack{
                 
                 URLImage( getImage(myimage: latest) ){ image in
@@ -54,7 +66,28 @@ struct spacexLatestView: View {
             
           Spacer()
             
-            Text (latest.details  ?? "Detail Not Found")
+            Text("   Spacex      Detail    ")
+                .background(.brown)
+                .foregroundColor(.white)
+                .cornerRadius(5)
+                .font(.headline)
+                 
+                .padding(0)
+            VStack(spacing: 25){
+                
+                
+                
+                TextShimmer(text: latest.details  ?? "   Detail Not Found   ", multiColors: $multiColor)
+                
+         
+                
+               
+            }
+            
+            
+            
+            
+            
             
         }
         .onAppear(){
@@ -90,6 +123,7 @@ struct spacexLatestView: View {
                 
         
     }
+    
 }
 
 struct spacexLatestView_Previews: PreviewProvider {
@@ -112,3 +146,73 @@ func getImage(myimage : latestModel) -> URL{
     }
 }
 
+
+struct TextShimmer: View {
+    
+    var text: String
+    @State var animation = false
+    @Binding var multiColors: Bool
+    
+    var body: some View{
+        
+        ZStack{
+             
+            Text(text)
+                .font(.system(size: 40, weight: .bold))
+                .foregroundColor(Color.white.opacity(0.5))
+                .background(.pink)
+                .cornerRadius(5)
+            // MultiColor Text....
+            
+            HStack(spacing: 0){
+                
+                ForEach(0..<text.count,id: \.self){index in
+                    
+                    Text(String(text[text.index(text.startIndex, offsetBy: index)]))
+                        .font(.system(size: 40, weight: .bold))
+                        .foregroundColor(multiColors ? randomColor() : Color.white)
+                        .background(.pink)
+                        .cornerRadius(5)
+                }
+            }
+            // Masking For Shimmer Effect...
+            .mask(
+            
+                Rectangle()
+                    // For Some More Nice Effect Were Going to use Gradient...
+                    .fill(
+                    
+                        // You can use any Color Here...
+                        LinearGradient(gradient: .init(colors: [Color.white.opacity(0.1),Color.white,Color.white.opacity(0.1)]), startPoint: .top, endPoint: .bottom)
+                    )
+                    .rotationEffect(.init(degrees: 170))
+                    .padding(20)
+                // Moving View Continously...
+                // so it will create Shimmer Effect...
+                    .offset(x: -250)
+                    .offset(x: animation ? 500 : 0)
+            )
+            .onAppear(perform: {
+            
+                withAnimation(Animation.linear(duration: 2).repeatForever(autoreverses: false)){
+                    
+                    animation.toggle()
+                }
+            })
+            
+        }
+       
+    }
+    
+    // Random Color....
+    
+    // It's Your Wish yOu can change anything here...
+    // or you can also use Array of colors to pick random One....
+    
+    func randomColor()->Color{
+        
+        let color = UIColor(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1), alpha: 1)
+        
+        return Color(color)
+    }
+}

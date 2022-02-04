@@ -1,9 +1,4 @@
-//
-//  GenericRepository.swift
-//  technicalTest
-//
-//  Created by burak cakir on 3.02.2022.
-//
+
 
 import Foundation
 import Alamofire

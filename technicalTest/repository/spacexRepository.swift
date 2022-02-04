@@ -1,12 +1,11 @@
 
-
-
 import Foundation
 
 
 class LatestManager : ObservableObject
 {
 
+    @Published var latests : [latestModel] = [latestModel]()
     @Published var latest : latestModel = latestModel()
     
    

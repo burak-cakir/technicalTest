@@ -1,20 +1,48 @@
-//
-//  spacexAllView.swift
-//  technicalTest
-//
-//  Created by burak cakir on 4.02.2022.
-//
+
 
 import SwiftUI
+import URLImage
 
 struct spacexAllView: View {
+    
+    
+    var Repo = GenericRepository<latestsModel>()
+      @State var list = [latestsModel]()
+    @State var latest : latestModel = latestModel()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+              
+            List(list, id:\.id){item in
+                VStack{
+                    Text(item.name)
+                    Text(item.details ?? "Detail Not Found")
+                    
+                    
+                     
+                 }
+                 
+             }
+             
+             .onAppear(){
+                 Repo.getAll(url: ""){ data in
+                     
+                     list = data;
+                     
+                 }
+             }
+         }
     }
-}
+
 
 struct spacexAllView_Previews: PreviewProvider {
     static var previews: some View {
         spacexAllView()
     }
 }
+
+}
+   
+    
+    
+
+
