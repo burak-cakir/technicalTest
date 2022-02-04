@@ -162,7 +162,7 @@ struct TextShimmer: View {
                 .foregroundColor(Color.white.opacity(0.5))
                 .background(.pink)
                 .cornerRadius(5)
-            // MultiColor Text....
+          
             
             HStack(spacing: 0){
                 
@@ -175,20 +175,19 @@ struct TextShimmer: View {
                         .cornerRadius(5)
                 }
             }
-            // Masking For Shimmer Effect...
+            
             .mask(
             
                 Rectangle()
-                    // For Some More Nice Effect Were Going to use Gradient...
+                 
                     .fill(
                     
-                        // You can use any Color Here...
+                        
                         LinearGradient(gradient: .init(colors: [Color.white.opacity(0.1),Color.white,Color.white.opacity(0.1)]), startPoint: .top, endPoint: .bottom)
                     )
                     .rotationEffect(.init(degrees: 170))
                     .padding(20)
-                // Moving View Continously...
-                // so it will create Shimmer Effect...
+               
                     .offset(x: -250)
                     .offset(x: animation ? 500 : 0)
             )
@@ -204,10 +203,7 @@ struct TextShimmer: View {
        
     }
     
-    // Random Color....
-    
-    // It's Your Wish yOu can change anything here...
-    // or you can also use Array of colors to pick random One....
+   
     
     func randomColor()->Color{
         
