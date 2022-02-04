@@ -49,7 +49,7 @@ struct latestModel : Codable , Identifiable {
     var name : String = ""
     var links : linksModel = linksModel()
     var flight_number : Int = 0
-//    var details : String = ""
+    var details : String?
 }
 //struct latestModel : Codable , Identifiable {
 //

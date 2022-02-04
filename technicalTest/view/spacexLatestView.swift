@@ -1,9 +1,10 @@
 import SwiftUI
-
+import URLImage
 
 struct spacexLatestView: View {
     
     @State var latest : latestModel = latestModel()
+    
     
     
     
@@ -43,19 +44,17 @@ struct spacexLatestView: View {
             .cornerRadius(5)
             HStack{
                 
-                Text (latest.links.patch.small)
+                URLImage( getImage(myimage: latest) ){ image in
+                    image.resizable()
+                    
+                }
+               
             }
             .padding()
             
           Spacer()
             
-            
-           
-            
-            
-            
-//            Text (String (latest.flight_number))
-//           Text (latest.details).lineLimit(1)
+            Text (latest.details  ?? "Detail Not Found")
             
         }
         .onAppear(){
@@ -102,4 +101,14 @@ struct spacexLatestView_Previews: PreviewProvider {
 
 
 
+func getImage(myimage : latestModel) -> URL{
+    if(myimage.links.patch.small.count > 0){
+       return URL(string: myimage.links.patch.small)!
+  
+    }
+    else{
+        return URL(string: "https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg")!
+      
+    }
+}
 
