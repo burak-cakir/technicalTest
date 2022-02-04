@@ -1,39 +1,47 @@
 import SwiftUI
-import URLImage
+
 
 struct spacexLatestView: View {
     
-  
+    @State var latest : latestModel = latestModel()
     
-    var Repo = GenericRepository<latestModel>()
-    @State var list = [latestModel]()
+    
+    
     var body: some View {
-       
         VStack{
-         
-            List(list, id:\.name){item in
-                HStack{
-                    
-                    
-     
-                    VStack{
-                        Text(String (item.flight_number) + "-"  + item.name )
-                        Text(String(item.id))
-                            .font(.callout)
+            Text( latest.id)
+            Text ( latest.name)
+            Text (latest.links.patch.small)
+        }
+        .onAppear(){
+            guard let url = URL(string: "https://api.spacexdata.com/v4/launches/latest") else{ return}
+            
+            
+           
+                URLSession.shared.dataTask(with: url){(data, response, error) in
+                
+                do{
+                    if let latest = data{
+                   
+                        let decodeData = try JSONDecoder().decode(latestModel.self , from: latest)
+                        
+                        DispatchQueue.main.async {
+                        self.latest = decodeData
+                            
+                          }
+                      
+                        
                     }
                 }
-              
-            }
+                catch{
+                    print("Error")
+                }
+                
+            }.resume()
             
+
         }
-        
-        .onAppear(){
-            Repo.getAll(url: ""){ data in
-                
-                list = data;
-                
-            }
-        }
+    
 
                 
         
@@ -49,9 +57,4 @@ struct spacexLatestView_Previews: PreviewProvider {
 
 
 
-func getImage(product:latestModel) -> URL{
-    
-       return URL(string: product.links?.patch?.small ?? "  ")!
-  
-    
-}
+

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19344F2227AD425300262C51 /* spacexAllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19344F2127AD425300262C51 /* spacexAllView.swift */; };
 		19C80C8927AC477C00D6AAFC /* technicalTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C80C8827AC477C00D6AAFC /* technicalTestApp.swift */; };
 		19C80C8B27AC477C00D6AAFC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C80C8A27AC477C00D6AAFC /* ContentView.swift */; };
 		19C80C8D27AC477D00D6AAFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19C80C8C27AC477D00D6AAFC /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		19344F2127AD425300262C51 /* spacexAllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spacexAllView.swift; sourceTree = "<group>"; };
 		19C80C8527AC477C00D6AAFC /* technicalTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = technicalTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19C80C8827AC477C00D6AAFC /* technicalTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = technicalTestApp.swift; sourceTree = "<group>"; };
 		19C80C8A27AC477C00D6AAFC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			children = (
 				19C80CA027AC559800D6AAFC /* spacexLatestView.swift */,
 				19C80CA727AC7F8E00D6AAFC /* fetchTodo.swift */,
+				19344F2127AD425300262C51 /* spacexAllView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				19C80C9D27AC484700D6AAFC /* webapi.swift in Sources */,
 				19C80CA527AC583A00D6AAFC /* GenericRepository.swift in Sources */,
 				19C80CA327AC55E800D6AAFC /* spacexRepository.swift in Sources */,
+				19344F2227AD425300262C51 /* spacexAllView.swift in Sources */,
 				19C80CA127AC559800D6AAFC /* spacexLatestView.swift in Sources */,
 				19C80C8927AC477C00D6AAFC /* technicalTestApp.swift in Sources */,
 			);

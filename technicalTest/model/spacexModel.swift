@@ -2,13 +2,9 @@
 
 import Foundation
 struct patchModel : Codable {
-//    "links": {
-//            "patch": {
-//                "small": "https://imgur.com/BrW201S.png",
-//                "large": "https://imgur.com/573IfGk.png"
-//            },
-    var small  : String? = ""
-    var large : String? = ""
+
+    var small  : String = ""
+    var large : String = ""
 }
 struct redditModel : Codable {
     var campaign  : String = ""
@@ -23,7 +19,7 @@ struct flickrModel : Codable {
 }
 
 struct linksModel : Codable {
-    var patch : patchModel?
+    var patch : patchModel = patchModel()
 
 //    var reddit :  redditModel?
 //    var flickr : flickrModel?
@@ -49,10 +45,11 @@ struct fairingsModel: Codable{
     
 }
 struct latestModel : Codable , Identifiable {
-    var id : String
-    var name : String
-    var flight_number : Int
-    var links : linksModel?
+    var id : String = ""
+   var name : String = ""
+    var links : linksModel = linksModel()
+//    var flight_number : Int
+//    var links : linksModel?
 }
 //struct latestModel : Codable , Identifiable {
 //
