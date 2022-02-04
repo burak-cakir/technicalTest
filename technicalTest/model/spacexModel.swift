@@ -46,10 +46,10 @@ struct fairingsModel: Codable{
 }
 struct latestModel : Codable , Identifiable {
     var id : String = ""
-   var name : String = ""
+    var name : String = ""
     var links : linksModel = linksModel()
-//    var flight_number : Int
-//    var links : linksModel?
+    var flight_number : Int = 0
+//    var details : String = ""
 }
 //struct latestModel : Codable , Identifiable {
 //
