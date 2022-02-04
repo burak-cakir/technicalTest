@@ -10,19 +10,37 @@ struct spacexLatestView: View {
     var body: some View {
         VStack{
             Text("Spacexdata Latest").underline()
-                .font(.title)
+                .font(.largeTitle)
                 .foregroundColor(Color.red)
-                .padding(5)
+                .padding(0)
             HStack{
+                Spacer()
                 Text("Spacex id :")
-                    .font(.caption)
+                    .font(.headline)
                 Text (latest.id)
-                    .font(.caption)
-            }.padding()
-            HStack{
+                    .font(.headline)
+                Spacer()
+            }.padding(5)
+                .background(Color.red)
+                .foregroundColor(Color.white)
+                .cornerRadius(5)
+            VStack{
                 Text("Spacex Name :")
-                Text (latest.name)
+                    .font(.headline)
+                HStack{
+                    Spacer()
+                    Text (latest.name)
+                        .font(.title)
+                        .bold()
+                    Spacer()
+                }
+                
+             
             }
+            .foregroundColor(Color.white)
+            .padding(5)
+            .background(Color.blue)
+            .cornerRadius(5)
             HStack{
                 
                 Text (latest.links.patch.small)
@@ -37,7 +55,7 @@ struct spacexLatestView: View {
             
             
 //            Text (String (latest.flight_number))
-//           Text (latest.details )
+//           Text (latest.details).lineLimit(1)
             
         }
         .onAppear(){
